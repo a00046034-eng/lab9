@@ -1,0 +1,57 @@
+  501  gh repo create lab9 --public --clone
+  502  cd lab9
+  503  gh label create "EPIC" --color "7057ff" --description "Main project tasks"
+  504  gh issue create --title "do lab9" --body "Complete Lab 9 using GitHub Actions for continuous integration." --label "EPIC"
+  505  gh issue create --title "create validate-data script" --body "Create a script to validate name and mobile number lengths." --label "enhancement" --assignee "@me"
+  506  nano validate-data.sh
+  507  chmod +x validate-data.sh
+  508  ./validate-data.sh "Alexia" "0871234567"
+  509  ./validate-data.sh "AlexiaKatambayLong" "0871234567"
+  510  ./validate-data.sh "Alexia" "08712345678"
+  511  gh issue create --title "create yaml test script" --body "Create a GitHub Actions workflow called basictests.yml to automatically run three validation tests." --label "enhancement" --assignee "@me"
+  512  mkdir -p .github/workflows
+  513  nano .github/workflows/basictests.yml
+  514  mkdir -p .github/workflows
+  515  nano .github/workflows/basictests.yml
+  516  ls -R .github
+  517  ls -l validate-data.sh
+  518  git add validate-data.sh .github/workflows/basictests.yml
+  519  git commit -m "Add validation script and GitHub Actions tests"
+  520  git branch -M main
+  521  git push -u origin main
+  522  gh issue close 2
+  523  gh issue close 3
+  524  gh issue create --title "create lab9 project view" --body "Create a GitHub Project called lab9 with one table view containing LABEL, TITLE and ASSIGNEE columns." --label "enhancement" --assignee "@me"
+  525  gh issue close 4
+  526  git switch -c test
+  527  git branch --show-current
+  528  nano validate-data.sh
+  529  cat validate-data.sh
+  530  nano validate-data.sh
+  531  ./validate-data.sh "Alexia" "0871234567"
+  532  ./validate-data.sh "" "0871234567"
+  533  ./validate-data.sh "Alexia" ""
+  534  git add validate-data.sh
+  535  git commit -m "Improve validation for empty inputs"
+  536  git push -u origin test
+  537  gh issue close 1
+  538  gh issue list --state all
+  539  git switch test
+  540  git pull origin main
+  541  nano validate-data.sh
+  542  ./validate-data.sh "Alexia" "0871234567"
+  543  ./validate-data.sh "AlexiaKatambayLong" "0871234567"
+  544  ./validate-data.sh "Alexia" "08712345678"
+  545  git branch --show-current
+  546  cat .github/workflows/basictests.yml
+  547  nano .github/workflows/basictests.yml
+  548  git branch --show-current
+  549  git add validate-data.sh .github/workflows/basictests.yml
+  550  git commit -m "Update validation limit and test branch workflow"
+  551  git push -u origin test
+  552  gh issue create --title "create test branch" --body "Create the test branch, increase the maximum name length to 20 characters, and configure GitHub Actions for both main and test." --label "enhancement" --assignee "@me"
+  553  history > history.txt
+  554  nano history.txt
+  555  history | grep -E 'gh auth|gh repo create lab9|cd lab9|gh label|gh issue|nano validate-data|chmod.*validate-data|validate-data.sh|git |basictests.yml|history' > history.txt
+  556  nano history.txt
+  557  history | awk '/gh repo create lab9/ {found=1} found {print}' > history.txt
